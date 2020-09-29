@@ -1,4 +1,5 @@
 require_relative 'create_budget'
+require 'ascii_charts'
 
 begin
 cmd = nil
@@ -21,8 +22,14 @@ cmd = nil
             yields = gets.chomp.to_f
             puts "How long are you planning to invest for in years?"
             investment_time = gets.chomp.to_i
-            savings = budget_surplus*12*(1+yields/100)**investment_time
+            savings = budget_surplus*investment_time*12*(1+yields/100)**investment_time
             puts "If you stick to your budget and invest all your money at #{yields}% you'll have $#{savings} after #{investment_time} years"
+            puts "Would you like to see a chart of your savings over 10 years?"
+            chart = gets.chomp
+            if chart == "yes"
+                puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, budget_surplus*x*12*(1+yields/100)**x]}, :title => 'savings graph').draw
+
+            end
         else puts "there's no budget surplus!"
         end
     end
