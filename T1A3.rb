@@ -22,12 +22,12 @@ cmd = nil
             yields = gets.chomp.to_f
             puts "How long are you planning to invest for in years?"
             investment_time = gets.chomp.to_i
-            savings = budget_surplus*investment_time*12*(1+yields/100)**investment_time
+            savings = (budget_surplus)*((1+yields/12/100)**(investment_time*12)/(yields/12/100))
             puts "If you stick to your budget and invest all your money at #{yields}% you'll have $#{savings} after #{investment_time} years"
-            puts "Would you like to see a chart of your savings over 10 years?"
+            puts "Would you like to see a chart of your savings over #{investment_time} years?"
             chart = gets.chomp
             if chart == "yes"
-                puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, budget_surplus*x*12*(1+yields/100)**x]}, :title => 'savings graph').draw
+                puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, (budget_surplus*12)*((1+yields/100)**x/(yields/100))]}, :title => 'savings graph').draw
 
             end
         else puts "there's no budget surplus!"
