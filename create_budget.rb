@@ -21,7 +21,7 @@ module Budget
         total_spending = rent+groceries+eating_out+clothing+health+entertainment+holidays+loans+miscellaneous
         rows = []
         rows << ["Rent", rent]
-        rows << ["Grocercies", groceries]
+        rows << ["Groceries", groceries]
         rows << ["Eating Out", eating_out]
         rows << ["Clothing", clothing]
         rows << ["Health", health]
@@ -34,7 +34,6 @@ module Budget
         puts budget_summary
         confirm = TTY::Prompt.new
         confirm = confirm.yes?("Is this correct")
-        puts confirm
         if confirm
             puts "Move onto adding income"
         else

@@ -4,8 +4,7 @@ require 'colorize'
 require 'tty-prompt'
 require 'terminal-table'
 
-begin
-    puts " 
+puts " 
      /$$$$$$$$                                   /$$                     /$$       /$$$$$$$                  /$$                       /$$    
     |__  $$__/                                  |__/                    | $$      | $$__  $$                | $$                      | $$    
        | $$     /$$$$$$   /$$$$$$  /$$$$$$/$$$$  /$$ /$$$$$$$   /$$$$$$ | $$      | $$  \\ $$ /$$   /$$  /$$$$$$$  /$$$$$$   /$$$$$$  /$$$$$$  
@@ -17,8 +16,11 @@ begin
                                                                                                                  /$$  \\ $$                    
                                                                                                                 |  $$$$$$/                    
                                                                                                                  \\______/                     "
+
+begin
+    
     prompt = TTY::Prompt.new
-    cmd = prompt.select("Which would you like to do?", ["Create budget", "Add Income", "Budget Surplus", "Invest", "Save Profile", "Load Profile", "quit"])
+    cmd = prompt.select("Which would you like to do?", ["Create budget", "Add Income", "Budget Surplus", "Invest", "Quit"])
     
     case cmd
     when 'Create budget' 
@@ -26,10 +28,17 @@ begin
     when 'Add Income'
         puts 'What is your net monthly income?'
         income = gets.chomp.to_i 
-        puts "your net monthly income is $#{income}"
+        # budget_surplus = income-total_spending
+        rows = []
+        rows << ["Net income", income]
+        income_summary = Terminal::Table.new :title => "Net income", :rows=> rows
+        puts income_summary
     when 'Budget Surplus'
         budget_surplus = income-total_spending
         puts "your net monthly surplus is $#{budget_surplus}"
+        if budget_surplus < 0 
+            puts "Income has to increase or spending has to decrease, please amend income or budget"
+        end
     when 'Invest'
         if budget_surplus > 0
             puts "What annual returns are you expecting from your investments?"
@@ -50,6 +59,6 @@ begin
        
 
     end  
-end until ['quit', 'q'].include? cmd 
+end until ['Quit', 'q'].include? cmd 
 
 
