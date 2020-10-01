@@ -1,23 +1,24 @@
 require_relative 'create_budget'
 require 'ascii_charts'
+require 'colorize'
+require 'tty-prompt'
+require 'terminal-table'
 
 begin
-cmd = nil
-    print 'Enter your command (create budget, add income, find budget surplus, invest, save, load, quit): '
-    cmd = gets.chomp.downcase.strip
+    prompt = TTY::Prompt.new
+    cmd = prompt.select("Which would you like to do?", ["Create budget", "Add Income", "Budget Surplus", "Invest", "Save Profile", "Load Profile", "quit"])
     
     case cmd
-    when 'create budget' 
+    when 'Create budget' 
        total_spending = Budget::create_budget
-       puts total_spending
-    when 'add income'
+    when 'Add Income'
         puts 'What is your net monthly income?'
         income = gets.chomp.to_i 
         puts "your net monthly income is $#{income}"
-    when 'find budget surplus'
+    when 'Budget Surplus'
         budget_surplus = income-total_spending
         puts "your net monthly surplus is $#{budget_surplus}"
-    when 'invest'
+    when 'Invest'
         if budget_surplus > 0
             puts "What annual returns are you expecting from your investments?"
             yields = gets.chomp.to_f
@@ -33,7 +34,7 @@ cmd = nil
             end
         else puts "there's no budget surplus!"
         end
-    when 'save'
+    when 'Save Profile'
        
 
     end  
