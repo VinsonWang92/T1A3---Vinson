@@ -3,18 +3,19 @@ require 'ascii_charts'
 
 begin
 cmd = nil
-    print 'Enter your command (create budget, add income, find budget surplus, invest, quit): '
+    print 'Enter your command (create budget, add income, find budget surplus, invest, save, load, quit): '
     cmd = gets.chomp.downcase.strip
     
     case cmd
-    when 'create budget'
-       Budget::create_budget
+    when 'create budget' 
+       total_spending = Budget::create_budget
+       puts total_spending
     when 'add income'
         puts 'What is your net monthly income?'
         income = gets.chomp.to_i 
         puts "your net monthly income is $#{income}"
     when 'find budget surplus'
-        budget_surplus = income-$total_spending
+        budget_surplus = income-total_spending
         puts "your net monthly surplus is $#{budget_surplus}"
     when 'invest'
         if budget_surplus > 0
@@ -32,7 +33,10 @@ cmd = nil
             end
         else puts "there's no budget surplus!"
         end
-    end
+    when 'save'
+       
+
+    end  
 end until ['quit', 'q'].include? cmd 
 
 
