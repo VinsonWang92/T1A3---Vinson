@@ -39,16 +39,33 @@ begin
         end
     when 'Invest'
         if budget_surplus > 0
-            puts "What annual returns are you expecting from your investments?"
-            yields = gets.chomp.to_f
+            rows = []
+            rows << ["Shares", "10% p.a."]
+            rows << ["REIT (Real Estate Investment Trusts (property)", "7.8% p.a."]
+            rows << ["Term deposits", "4.2% p.a."]
+            rows << ["Bonds", "6.1% p.a."]
+            invest_summary = Terminal::Table.new :title => "Types of investments", :headings => ["Type of Investment", "Average returns over last 15 years"], :rows=> rows
+            puts invest_summary
+            yields = TTY::Prompt.new
+            yields = yields.select("What would you like to invest in?", ["Shares", "REIT", "Term_deposits", "Bonds"])
+            case yields
+                when "Shares"
+                    yields = 0.10
+                when "REIT" 
+                    yields = 0.78
+                when "Term_deposits" 
+                    yields = 0.42
+                when "Bonds"
+                    yields = 0.61
+            end
             puts "How long are you planning to invest for in years?"
             investment_time = gets.chomp.to_i
-            savings = (budget_surplus)*((1+yields/12/100)**(investment_time*12)/(yields/12/100))
-            puts "If you stick to your budget and invest all your money at #{yields}% you'll have $#{savings} after #{investment_time} years"
+            savings = (budget_surplus)*((1+yields/12)**(investment_time*12)/(yields/12))
+            puts "If you stick to your budget and invest all your money at #{yields*100}% p.a. you'll have $#{savings} after #{investment_time} years"
             puts "Would you like to see a chart of your savings over #{investment_time} years?"
             chart = gets.chomp
             if chart == "yes"
-                puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, (budget_surplus*12)*((1+yields/100)**x/(yields/100))]}, :title => 'savings graph').draw
+                puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, (budget_surplus*12)*((1+yields)**x/(yields))]}, :title => 'savings graph').draw
             end
         else puts "there's no budget surplus! Please create a another budget and add income to create a budget surplus"
         end
