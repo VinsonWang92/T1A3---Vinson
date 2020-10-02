@@ -50,21 +50,25 @@ begin
             yields = yields.select("What would you like to invest in?", ["Shares", "REIT", "Term_deposits", "Bonds"])
             case yields
                 when "Shares"
-                    yields = 0.10
+                    yields = 10
                 when "REIT" 
-                    yields = 0.78
+                    yields = 7.8
                 when "Term_deposits" 
-                    yields = 0.42
+                    yields = 4.2
                 when "Bonds"
-                    yields = 0.61
+                    yields = 6.1
             end
             puts "How long are you planning to invest for in years?"
             investment_time = gets.chomp.to_i
-            savings = (budget_surplus)*((1+yields/12)**(investment_time*12)/(yields/12))
-            puts "If you stick to your budget and invest all your money at #{yields*100}% p.a. you'll have $#{savings} after #{investment_time} years"
-            puts "Would you like to see a chart of your savings over #{investment_time} years?"
-            chart = gets.chomp
-            if chart == "yes"
+            savings = (budget_surplus)*((1+yields/12/100)**(investment_time*12)/(yields/12/100))
+            rows = []
+            rows << [budget_surplus, investment_time, yields, savings]
+            savings_summary = Terminal::Table.new :title => "Net worth/savings summary", :headings => ["Savings contribution/month", "Investment Time(years)", "Investment yields(%)", "Total investment portfolio worth"], :rows=> rows
+            puts savings_summary
+            puts "If you stick to your budget and invest all your money at #{yields}% p.a. you'll have $#{savings} after #{investment_time} years"
+            chart = TTY::Prompt.new
+            chart = chart.yes?("Would you like to see a chart of your savings over #{investment_time} years?")
+            if chart
                 puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, (budget_surplus*12)*((1+yields)**x/(yields))]}, :title => 'savings graph').draw
             end
         else puts "there's no budget surplus! Please create a another budget and add income to create a budget surplus"
