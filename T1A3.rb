@@ -1,4 +1,5 @@
 require_relative 'create_budget'
+require_relative 'add_income'
 require 'ascii_charts'
 require 'colorize'
 require 'tty-prompt'
@@ -24,18 +25,15 @@ begin
     
     case cmd
     when 'Create budget' 
-       total_spending = Budget::create_budget
+        total_spending = Budget::create_budget
     when 'Add Income'
-        puts 'What is your net monthly income?'
-        income = gets.chomp.to_i 
-        # budget_surplus = income-total_spending
-        rows = []
-        rows << ["Net income", income]
-        income_summary = Terminal::Table.new :title => "Net income", :rows=> rows
-        puts income_summary
+        income = Income::add_income
     when 'Budget Surplus'
         budget_surplus = income-total_spending
-        puts "your net monthly surplus is $#{budget_surplus}"
+        rows = []
+        rows << ["Budget Surplus", budget_surplus]
+        surplus_summary = Terminal::Table.new :title => "Net monthly savings", :rows=> rows
+        puts surplus_summary
         if budget_surplus < 0 
             puts "Income has to increase or spending has to decrease, please amend income or budget"
         end
@@ -51,9 +49,8 @@ begin
             chart = gets.chomp
             if chart == "yes"
                 puts AsciiCharts::Cartesian.new((0..investment_time).to_a.map{|x| [x, (budget_surplus*12)*((1+yields/100)**x/(yields/100))]}, :title => 'savings graph').draw
-
             end
-        else puts "there's no budget surplus!"
+        else puts "there's no budget surplus! Please create a another budget and add income to create a budget surplus"
         end
     when 'Save Profile'
        
