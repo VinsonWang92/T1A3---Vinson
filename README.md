@@ -23,10 +23,10 @@ A user will set the budget first and if there is no surplus the budget needs to 
 - at least THREE features
 - describe each feature
 The three main features that would be included in the application are:
-- Having a login/password to your account
-    - since you're entering some private financial information into the program, in order to access it, you will need a login and password. The password will be required to be of certain strength to increase security. This is an ethical concern and although no real personal information is required to use the application, it will safe guard the user from someone getting access to their personal budgets if they're on their computer. 
-- Can create multiple budgets and profiles for your account
-    - you can play around and compare multiple budgets and profiles for differing incomes and see how much faster you can reach your financial goals based on how tight you set your budget, what your income is and what yields you expect to get on the investment of your money. By having multple scenarios that users can compare, they can see the effect of having higher income and retaining the same spending habits vs increased spending and all sorts of interesting relationships that will ultimately affect their financial goals and security. 
+- Ability to create a budget 
+    - you will be prompted to provide details of categories of spending that should be relevant to most if not all Australians. This will allow you to have an idea of your monthly spendings and how much income you will need to maintain your current lifestyle. The figures may surprise some people
+- Summaries of your data entered to be displayed in tables
+    - all the data you enter, whether it be your budget, income or how long you're looking to invest for will return and display in a table the data that you have entered. If there are incorrect figures you can simply just go and re-enter the figures by choosing the option again until the data is correct
 - Graphs will be output to show trajectory of your savings/investment goals based on data input by user
     - this will be a visual representation which may be helpful to demonstrate the power of compounding interest which is exponential rather than geometric. By having this tool it allows the user to see the relationship between time and investment returns and how the earlier you get started in investing the bigger the rewards will be, which may motivate some to start right away as opposed to delay the implementation of their budget. 
 
@@ -39,6 +39,11 @@ Your outline must include:
 
 The user will be prompted via text on their console on how to use each feature. Every action taken will provide a prompt to further actions or to return to menu. 
 
-All interactions are text based and the user will either be entering all integers, floats or strings and there no inputs with a mix of strings and integers will be accepted
+All interactions are text based and the user should be entering all integers. 
 
-Errors will be returned with plain english and prompt the user to re-enter their input. Main error will be when integers are expected but there are letters or symbols in the input. Otherwise, errors with passwords and logins will prompt them to re-enter their password or make a new account. 
+If they enter anything else other than integers they will be provided with an error message and will be taken back to the menu or they will be shown a message where they will be notified that it was an invalid input and a default value was placed instead of their input.
+
+#R8
+
+![controlflow](docs/controlflow.png)
+
