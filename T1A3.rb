@@ -1,5 +1,6 @@
 require_relative 'create_budget'
 require_relative 'add_income'
+#four ruby gems utilised in program
 require 'ascii_charts'
 require 'colorize'
 require 'tty-prompt'
@@ -24,10 +25,12 @@ begin
     cmd = prompt.select("Which would you like to do?".colorize(:blue), ["Create budget", "Add Income", "Budget Surplus", "Invest", "Quit"])
     
     case cmd
+    #first feature - creating a budget
     when 'Create budget' 
         total_spending = Budget::create_budget
     when 'Add Income'
         income = Income::add_income
+    #second feature - finding your budget surplus
     when 'Budget Surplus'
         if total_spending && income !=nil
             budget_surplus = income-total_spending
@@ -41,6 +44,7 @@ begin
         else 
             puts "Please complete a budget and add income first"
         end
+    #third feature - options to invest budget surplus
     when 'Invest'
         if budget_surplus != nil
             if budget_surplus > 0
@@ -65,6 +69,7 @@ begin
                 end
                 puts "How long are you planning to invest for in years?"
                 investment_time = gets.chomp
+                #error handling for incorrect inputs 
                 begin
                     investment_time = Integer(investment_time)
                   rescue ArgumentError, TypeError
@@ -72,11 +77,13 @@ begin
                     investment_time = 10
                 end
                 savings = (budget_surplus)*((1+yields/12/100)**(investment_time*12)/(yields/12/100))
+                #extensive use of terminal table gem to display summaries of inputs and provide information
                 rows = []
                 rows << [budget_surplus, investment_time, yields, savings]
                 savings_summary = Terminal::Table.new :title => "Net worth/savings summary", :headings => ["Savings contribution/month", "Investment Time(years)", "Investment yields(%)", "Total investment portfolio worth"], :rows=> rows
                 puts savings_summary
                 puts "If you stick to your budget and invest all your money at #{yields}% p.a. you'll have $#{savings} after #{investment_time} years".colorize(:green)
+                #fourth feature - graphical representation of savings progress
                 chart = TTY::Prompt.new
                 chart = chart.yes?("Would you like to see a chart of your savings over #{investment_time} years?")
                 if chart
