@@ -1,8 +1,13 @@
 module Income
     def add_income
         puts 'What is your net monthly income?'
-        income = gets.chomp.to_i 
-        # budget_surplus = income-total_spending
+        income = gets.chomp
+        begin
+            income = Integer(income)
+          rescue ArgumentError, TypeError
+            puts "Invalid input, please input integers only"
+            return income = nil    
+          end
         rows = []
         rows << ["Net income", income]
         income_summary = Terminal::Table.new :title => "Net income", :rows=> rows
