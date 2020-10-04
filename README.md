@@ -23,8 +23,16 @@ Any system with Ruby installed and the following gems can run the application:
 ## **How to Install and Run**
 
 - If you do not have Ruby on your computer, follow these instructions to [download and install](https://www.ruby-lang.org/en/documentation/installation/).
-- Clone the project files onto your computer from the source code here: https://github.com/VinsonWang92/T1A3---Vinson.git
-- On the terminal command line, navigate to the terminalbudget directory you just cloned
+- open your Terminal and do the following:
+```
+$ git clone https://github.com/VinsonWang92/T1A3---Vinson.git
+```
+
+- then change directory to the newly cloned folder
+```
+$ cd T1A3---Vinson
+```
+
 - If you do not have the 'bundler' gem installed on your computer, please enter the following code.
 
 ```
@@ -97,6 +105,8 @@ The user will be prompted via text on their console on how to use each feature. 
 All interactions are text based and the user should be entering all integers. 
 
 If they enter anything else other than integers they will be provided with an error message and will be taken back to the menu or they will be shown a message where they will be notified that it was an invalid input and a default value was placed instead of their input.
+
+In order to have a graph display, you will need to have created your budget, added income and confirmed your budget surplus. You will then select the "Invest" option at which point you will be prompted to choose an investment option and input how long you wish to invest for. You will then be prompted on whether you want to display this on a graph. Choose Yes (enter "y") to show graph
 
 # R8
 
