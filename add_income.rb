@@ -5,9 +5,9 @@ module Income
         begin
             income = Integer(income)
           rescue ArgumentError, TypeError
-            puts "Invalid input, please input integers only"
+            puts "Invalid input, please retry adding income and input integers only"
             return income = nil    
-          end
+        end
         rows = []
         rows << ["Net income", income]
         income_summary = Terminal::Table.new :title => "Net income", :rows=> rows

@@ -14,3 +14,5 @@ gem "terminal-table", "~> 1.8"
 
 gem "tty-prompt"
 
+
+gem "ocra", "~> 1.3"

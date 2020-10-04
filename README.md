@@ -2,7 +2,46 @@
 
 #Link to source control repository
 
-#R5
+#Link to Trello project management board
+https://trello.com/b/F9iW6HYq/terminal-application 
+
+#Description
+
+TerminalBudget is a simple application that allows you to enter a mock budget and see the effects of having a budget surplus and the long term of effects of investing that surplus. It takes only integers as inputs from the user, is simple, easy to use and information is displayed clearly in tables and graphs.
+
+#System Requirements
+
+Application has only been tested on Mac OS Catalina 10.15.6
+
+Any system with Ruby installed and the following gems can run the application:
+- gem "ascii-charts", "~> 0.9.3"
+- gem "colorize", "~> 0.8.1"
+- gem "terminal-table", "~> 1.8"
+- gem "tty-prompt"
+
+## **How to Install and Run**
+
+- If you do not have Ruby on your computer, follow these instructions to [download and install](https://www.ruby-lang.org/en/documentation/installation/).
+- Clone the project files onto your computer from the source code here: https://github.com/Lou-Flan/bot-dog.
+- On the terminal command line, navigate to the Terminal Finance directory you just cloned
+- If you do not have the 'bundler' gem installed on your computer, please enter the following code.
+
+```
+$ install bundler
+```
+
+- Once 'bundler' has been installed, enter the following code to install the gems required for the application.
+
+```
+$ bundle install 
+```
+
+```
+$ ruby terminal-budget.rb
+```
+
+
+#R5 - Software Development Plan
 ##Develop a statement of purpose and scope for your application. It must include:
 - describe at a high level what the application will do
 - identify the problem it will solve and explain why you are developing it
