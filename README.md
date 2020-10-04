@@ -3,7 +3,7 @@
 
 https://github.com/VinsonWang92/T1A3---Vinson.git
 
-#Link to Trello project management board
+# Link to Trello project management board
 https://trello.com/b/F9iW6HYq/terminal-application 
 
 # Description
@@ -23,8 +23,8 @@ Any system with Ruby installed and the following gems can run the application:
 ## **How to Install and Run**
 
 - If you do not have Ruby on your computer, follow these instructions to [download and install](https://www.ruby-lang.org/en/documentation/installation/).
-- Clone the project files onto your computer from the source code here: https://github.com/Lou-Flan/bot-dog.
-- On the terminal command line, navigate to the Terminal Finance directory you just cloned
+- Clone the project files onto your computer from the source code here: https://github.com/VinsonWang92/T1A3---Vinson.git
+- On the terminal command line, navigate to the terminalbudget directory you just cloned
 - If you do not have the 'bundler' gem installed on your computer, please enter the following code.
 
 ```
@@ -38,7 +38,22 @@ $ bundle install
 ```
 
 ```
-$ ruby terminal-budget.rb
+$ ruby terminalbudget.rb
+```
+### **_Or_**
+
+Alternatively, you can run the application with the bash script supplied in the source code. 
+
+To do so you will need to run the following line of code before running the bash script.
+
+```
+$ chmod +x run.sh
+```
+
+Then run the bash script.
+
+```
+$ ./run.sh
 ```
 
 

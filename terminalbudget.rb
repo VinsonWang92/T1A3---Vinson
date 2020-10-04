@@ -1,3 +1,5 @@
+#!ruby
+
 require_relative 'create_budget'
 require_relative 'add_income'
 #four ruby gems utilised in program
