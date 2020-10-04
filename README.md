@@ -1,15 +1,16 @@
-#Referenced sources
 
-#Link to source control repository
+# Link to source control repository
+
+https://github.com/VinsonWang92/T1A3---Vinson.git
 
 #Link to Trello project management board
 https://trello.com/b/F9iW6HYq/terminal-application 
 
-#Description
+# Description
 
 TerminalBudget is a simple application that allows you to enter a mock budget and see the effects of having a budget surplus and the long term of effects of investing that surplus. It takes only integers as inputs from the user, is simple, easy to use and information is displayed clearly in tables and graphs.
 
-#System Requirements
+# System Requirements
 
 Application has only been tested on Mac OS Catalina 10.15.6
 
@@ -41,8 +42,8 @@ $ ruby terminal-budget.rb
 ```
 
 
-#R5 - Software Development Plan
-##Develop a statement of purpose and scope for your application. It must include:
+# R5 - Software Development Plan
+## Develop a statement of purpose and scope for your application. It must include:
 - describe at a high level what the application will do
 - identify the problem it will solve and explain why you are developing it
 - identify the target audience 
@@ -57,8 +58,8 @@ The target audience will be people with a stable income that feel that they are 
 A user will set the budget first and if there is no surplus the budget needs to be amended before they can continue, they must have a budget surplus or they'll never have savings and any unexpected financial costs will put them into high interest debt and they will be trapped in a debt cycle if they do not alter their financial choices. Once they set a budget that they feel that they can comply with that comes with a surplus based on their income, it will allow them to see the power of compounding interest and how a little savings each month can lead to a substantially larger amount than they thought possible if returns are stable. This should motivate them to further save and spend within their means. 
 
 
-#R6
-##Develop a list of features that will be included in the application. It must include:
+# R6
+## Develop a list of features that will be included in the application. It must include:
 - at least THREE features
 - describe each feature
 The three main features that would be included in the application are:
@@ -69,8 +70,8 @@ The three main features that would be included in the application are:
 - Graphs will be output to show trajectory of your savings/investment goals based on data input by user
     - this will be a visual representation which may be helpful to demonstrate the power of compounding interest which is exponential rather than geometric. By having this tool it allows the user to see the relationship between time and investment returns and how the earlier you get started in investing the bigger the rewards will be, which may motivate some to start right away as opposed to delay the implementation of their budget. 
 
-#R7
-##Develop an outline of the user interaction and experience for the application.
+# R7
+## Develop an outline of the user interaction and experience for the application.
 Your outline must include:
 - how the user will find out how to interact with / use each feature
 - how the user will interact with / use each feature
@@ -82,7 +83,7 @@ All interactions are text based and the user should be entering all integers.
 
 If they enter anything else other than integers they will be provided with an error message and will be taken back to the menu or they will be shown a message where they will be notified that it was an invalid input and a default value was placed instead of their input.
 
-#R8
+# R8
 
 ![controlflow](docs/controlflow.png)
 
